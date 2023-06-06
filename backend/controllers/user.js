@@ -75,6 +75,7 @@ exports.register = async (req, res) => {
       "30m"
     );
     const url = `${process.env.BASE_URL}/activate/${emailVerificationToken}`;
+    console.log('code works up to this point url:', url)
     sendVerificationEmail(user.email, user.first_name, url);
     const token = generateToken({ id: user._id.toString() }, "7d");
     res.send({
@@ -161,6 +162,7 @@ exports.sendVerification = async (req, res) => {
       "30m"
     );
     const url = `${process.env.BASE_URL}/activate/${emailVerificationToken}`;
+
     sendVerificationEmail(user.email, user.first_name, url);
     return res.status(200).json({
       message: "Email verification link has been sent to your email.",
@@ -218,6 +220,25 @@ exports.validateResetCode = async (req, res) => {
       });
     }
     return res.status(200).json({ message: "ok" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+
+exports.changePassword = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    const cryptedPassword = await bcrypt.hash(password, 12);
+    await User.findOneAndUpdate(
+      { email },
+      {
+        password: cryptedPassword,
+      }
+    );
+    return res.status(200).json({ message: "ok" });
+    
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
