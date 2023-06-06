@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import { Link } from "react-router-dom";
-import LoginInput from "../../components/inputs/logininput";
+import LoginInput from "../inputs/loginInput";
 import DotLoader from "react-spinners/DotLoader";
 import axios from 'axios'
 import { useDispatch } from 'react-redux'
@@ -105,7 +105,7 @@ export default function LoginForm({ setVisible }) {
           </Formik>
 
 
-          <Link to="/forgot" className="forgot_password">
+          <Link to="/reset" className="forgot_password">
             Forgotten password?
           </Link>
            <DotLoader color="#1876f2" loading={loading} size={30}/>

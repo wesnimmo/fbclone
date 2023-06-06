@@ -99,7 +99,7 @@ export default function RegisterForm({ setVisible }) {
       setSuccess(data.message);
       const { message, ...rest } = data;
 
-      console.log(data)
+      console.log('here is new registrant-->', data)
 
       setTimeout(() => {
         dispatch({ type: "LOGIN", payload: rest})
