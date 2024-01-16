@@ -2,7 +2,7 @@ header {
   position: fixed;
   top: 0;
   height: 56px;
-  z-index: 99;
+  z-index: 9999999999999;
   background: var(--bg-primary);
   width: 100%;
   box-shadow: 1px 8px 15px -7px var(--shadow-2);
@@ -463,6 +463,7 @@ header {
   width: 20px;
   height: 20px;
 }
+
 /*-------User menu----*/
 
 /*---responsive----------*/
@@ -567,12 +568,15 @@ header {
 }
 /*---responsive----------*/
 
-/*----Active Header-----*/
+/*----Active header----*/
 .active_header {
-  background:  var(--light-blue-color);
+  background: var(--light-blue-color);
 }
-
 .active_header svg {
   fill: var(--blue-color);
 }
-/*----Active Header-----*/
+.active_link {
+  background: var(--light-blue-color);
+  color: var(--blue-color);
+}
+/*----Active header----*/

@@ -4,6 +4,7 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 import LoginInput from "../../components/inputs/loginInput";
 import * as Yup from "yup";
 import axios from "axios";
+
 export default function ChangePassword({
   password,
   setPassword,
@@ -28,6 +29,7 @@ export default function ChangePassword({
       .required("Confirm your password.")
       .oneOf([Yup.ref("password")], "Passwords must match."),
   });
+  
   const { email } = userInfos;
   const changePassword = async () => {
     try {
